@@ -1,0 +1,6 @@
+version: "3.3"
+services:
+  jenkins_asp_net_core-app:
+    image: ngoclqdocker/jenkins_asp_net_core:latest
+    ports:
+      - "8080:80"
