@@ -9,7 +9,7 @@ pipeline {
     stage("Test") {
 		agent {
 			docker {
-				image 'mcr.microsoft.com/dotnet/sdk:5.0' // Sử dụng image SDK của .NET Core
+				image 'mcr.microsoft.com/dotnet/sdk:3.1' // Sử dụng image SDK của .NET Core
 				args '-u 0:0 -v /tmp:/root/.nuget' // Có thể cần thay đổi đường dẫn tùy theo cấu trúc dự án
 			}
 		}
