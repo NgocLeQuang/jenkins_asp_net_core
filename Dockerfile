@@ -5,7 +5,7 @@
  WORKDIR /src
  COPY ["jenkins_asp_net_core/jenkins_asp_net_core.csproj", ""]
  RUN dotnet restore "./jenkins_asp_net_core.csproj"
- COPY . .
+ COPY "jenkins_asp_net_core/." .
  WORKDIR "/src/."
  RUN dotnet build "jenkins_asp_net_core.csproj" -c Release -o /app/build
  FROM build AS publish
