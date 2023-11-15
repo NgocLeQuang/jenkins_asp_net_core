@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "7IEatJpTE4yEobEdwMmL+FPKWhRX5E1kTE/bP6O6WvjyLwW8wB2KI8r+WoVZcJNHcuCBPOhlDkMmmIOH18VPWQ==",
+  "success": true,
+  "projectFilePath": "D:\\ASP.NET\\jenkins_asp_net_core\\jenkins_asp_net_core\\jenkins_asp_net_core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512"
+  ],
+  "logs": []
+}
