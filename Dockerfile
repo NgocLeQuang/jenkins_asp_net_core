@@ -3,7 +3,7 @@
  EXPOSE 80
  FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
  WORKDIR /src
- COPY ["jenkins_asp_net_core/jenkins_asp_net_core.csproj", "jenkins_asp_net_core/"]
+ COPY ["jenkins_asp_net_core/jenkins_asp_net_core.csproj", ""]
  RUN dotnet restore "./jenkins_asp_net_core.csproj"
  COPY . .
  WORKDIR "/src/."
