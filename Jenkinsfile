@@ -47,7 +47,7 @@ pipeline {
 		steps{
 			script{
 				sshagent(['ssh-remote']) {
-					//sh 'ssh -o StrictHostKeyChecking=no -i ssh-remote root@192.168.10.6 touch deploy_jenkins_asp_net_core/test1.txt'
+					sh 'ssh -o StrictHostKeyChecking=no -i ssh-remote root@192.168.10.6 touch deploy_jenkins_asp_net_core/test1.txt'
 					sh 'ssh -o StrictHostKeyChecking=no -i ssh-remote root@192.168.10.6 ./deploy_jenkins_asp_net_core/deploy.sh'
 				}
 			}
