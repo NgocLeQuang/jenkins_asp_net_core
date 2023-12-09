@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace jenkins_asp_net_core.Controllers
@@ -13,6 +12,7 @@ namespace jenkins_asp_net_core.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> _logger2;
 
         public HomeController(ILogger<HomeController> logger)
         {
