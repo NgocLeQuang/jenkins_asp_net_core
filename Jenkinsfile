@@ -17,7 +17,7 @@ pipeline {
 			sh "dotnet build" // Xây dựng ứng dụng
 			sh "apt-get update"
       			sh "apt-get install --yes openjdk-11-jre"
-		     	sh "dotnet tool install --global dotnet-sonarscanner"
+		     	//sh "dotnet tool install --global dotnet-sonarscanner"
 		      	sh "export PATH=\"$PATH:$HOME/.dotnet/tools\""
 			//sh "dotnet test" // Chạy các bài kiểm  tra
 			withSonarQubeEnv('Sonarqube-jenkins-docker') {
