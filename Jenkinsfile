@@ -4,7 +4,17 @@ pipeline {
   environment {
     DOCKER_IMAGE = "ngoclqdocker/jenkins_asp_net_core"
   }
-
+  stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def scannerHome = tool 'SonarScanner for MSBuild'
+    withSonarQubeEnv() {
+      sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"jenkins_asp_net_core\""
+      sh "dotnet build"
+      sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
+    }
+  }
   stages {
     stage("Test") {
 		agent {
