@@ -4,6 +4,7 @@ pipeline {
   environment {
     DOCKER_IMAGE = "ngoclqdocker/jenkins_asp_net_core"
   }
+  node {
   stage('SCM') {
     checkout scm
   }
@@ -15,6 +16,7 @@ pipeline {
       sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
     }
   }
+}
   stages {
     stage("Test") {
 		agent {
