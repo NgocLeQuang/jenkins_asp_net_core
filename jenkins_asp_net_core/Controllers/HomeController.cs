@@ -12,7 +12,6 @@ namespace jenkins_asp_net_core.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ILogger<HomeController> _logger2;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -21,7 +20,7 @@ namespace jenkins_asp_net_core.Controllers
 
         public IActionResult Index()
         {
-			ViewData["data"]="sonarqube in jenkins v1.0.3";
+			ViewData["data"]="sonarqube in jenkins v1.0.4";
             return View();
         }
 
