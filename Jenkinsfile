@@ -19,10 +19,11 @@ pipeline {
 		}
 	}        
 	stage('SonarQube Analysis') {
+		agent any
 		steps {
 			// Bước chạy SonarQube Scanner
 			withSonarQubeEnv('SonarQubeServer') {
-				sh "${tool 'sonarqube-scanner'}/bin/sonar-scanner"
+				sh "${tool 'SonarScannerforMSBuild'}/bin/sonar-scanner"
 			}
 		}
 	}
