@@ -18,13 +18,16 @@ pipeline {
 			//sh "dotnet test" // Chạy các bài kiểm tra
 		}
 	}        
-	stage('SonarQube Analysis') {
+	stage('SonarQubeAnalysis') {
 		agent any
 		steps {
-			// Bước chạy SonarQube Scanner
-			withSonarQubeEnv('SonarQubeServer') {
-				sh "${tool 'SonarScannerforMSBuild'}/bin/sonar-scanner"
+			def scannerHome = tool 'SonarScannerforMSBuild'
+			withSonarQubeEnv() {
+				sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"jenkins_asp_net_core\""
+				sh "dotnet build"
+				sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
 			}
+			
 		}
 	}
 	stage("build")
