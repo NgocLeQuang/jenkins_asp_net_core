@@ -4,7 +4,7 @@ pipeline {
   environment {
     DOCKER_IMAGE = "ngoclqdocker/jenkins_asp_net_core"
   }
-  node {
+  stages {
   stage('SCM') {
     checkout scm
   }
