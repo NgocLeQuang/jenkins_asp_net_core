@@ -12,12 +12,12 @@ pipeline {
 				checkout scm
 			}
 		}
-		stage('SonarQube Analysis') 
+		stage('SonarQubeAnalysis') 
 		{
 		  agent any
 			steps
 			{
-				def scannerHome = tool 'SonarScanner for MSBuild'
+				def scannerHome = tool 'SonarScannerforMSBuild'
 				withSonarQubeEnv() {
 				  sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"jenkins_asp_net_core\""
 				  sh "dotnet build"
