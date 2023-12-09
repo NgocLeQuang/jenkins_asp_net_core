@@ -16,7 +16,7 @@ pipeline {
 			sh "dotnet restore" // Sử dụng dotnet restore để khôi phục các gói NuGet
 			sh "dotnet build" // Xây dựng ứng dụng
 			//sh "dotnet test" // Chạy các bài kiểm tra
-			withSonarQubeEnv() {
+			withSonarQubeEnv('Sonarqube-jenkins-docker') {
 				sh "dotnet ${tool 'SonarScannerforMSBuild'}/SonarScanner.MSBuild.dll begin /k:\"jenkins_asp_net_core\""
 				sh "dotnet build"
 				sh "dotnet ${tool 'SonarScannerforMSBuild'}/SonarScanner.MSBuild.dll end"
