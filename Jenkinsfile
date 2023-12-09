@@ -17,9 +17,6 @@ pipeline {
 			sh "dotnet build" // Xây dựng ứng dụng
 			//sh "dotnet test" // Chạy các bài kiểm tra
 		}
-	}        
-	stage('SonarQubeAnalysis') {
-		agent any
 		steps {
 			def scannerHome = tool 'SonarScannerforMSBuild'
 			withSonarQubeEnv() {
@@ -27,7 +24,6 @@ pipeline {
 				sh "dotnet build"
 				sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
 			}
-			
 		}
 	}
 	stage("build")
