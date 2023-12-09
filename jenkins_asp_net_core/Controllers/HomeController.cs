@@ -13,7 +13,6 @@ namespace jenkins_asp_net_core.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ILogger<HomeController> _logger2;
 
         public HomeController(ILogger<HomeController> logger)
         {
