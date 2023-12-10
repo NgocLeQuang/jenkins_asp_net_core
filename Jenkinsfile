@@ -3,6 +3,7 @@ pipeline {
   agent none
   environment {
     DOCKER_IMAGE = "ngoclqdocker/jenkins_asp_net_core"
+    JAVA_HOME = "/opt/java/openjdk"
   }
   stages {
     stage("Test") {
@@ -17,7 +18,6 @@ pipeline {
 			sh "dotnet build" // Xây dựng ứng dụng
 			//sh "apt-get update"
       			//sh "apt-get install --yes openjdk-11-jre"
-			sh "unset JAVA_HOME"
 		     	sh "dotnet tool install --global dotnet-sonarscanner"
 		      	sh "export PATH=\"$PATH:$HOME/.dotnet/tools\""
 			//sh "dotnet test" // Chạy các bài kiểm  tra
