@@ -25,6 +25,7 @@ pipeline {
 			withSonarQubeEnv('Sonarqube-jenkins-docker') {
 			sh "dotnet ${tool 'SonarScannerforMSBuild'}/SonarScanner.MSBuild.dll begin /k:\"jenkins_asp_net_core\""
 			sh "dotnet build"
+			sh "echo ${JAVA_HOME}"
 			sh "dotnet ${tool 'SonarScannerforMSBuild'}/SonarScanner.MSBuild.dll end"
 		}
 		}
