@@ -3,7 +3,7 @@ pipeline {
   agent none
   environment {
     DOCKER_IMAGE = "ngoclqdocker/jenkins_asp_net_core"
-    JAVA_HOME = "/opt/java/openjdk"
+    JAVA_HOME = "/opt/java/openjdk/"
   }
   stages {
     stage("Test") {
