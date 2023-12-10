@@ -25,6 +25,8 @@ pipeline {
       stage("smc") {
 	agent any
 	steps {
+		sh "dotnet tool install --global dotnet-sonarscanner"
+		sh "export PATH=\"$PATH:$HOME/.dotnet/tools\""
 		withSonarQubeEnv('Sonarqube-jenkins-docker') {
 			sh "dotnet ${tool 'SonarScannerforMSBuild'}/SonarScanner.MSBuild.dll begin /k:\"jenkins_asp_net_core\""
 			sh "dotnet build"
