@@ -3,7 +3,6 @@ pipeline {
   agent none
   environment {
     DOCKER_IMAGE = "ngoclqdocker/jenkins_asp_net_core"
-    JAVA_HOME = "/opt/java/openjdk/"
   }
   stages {
     stage("Test") {
@@ -17,15 +16,13 @@ pipeline {
 			sh "dotnet restore" // Sử dụng dotnet restore để khôi phục các gói NuGet
 			sh "dotnet build" // Xây dựng ứng dụng
 			//sh "apt-get update"
-      			//sh "apt-get install --yes openjdk-11-jre"
+      			sh "apt-get install --yes openjdk-11-jre"
 		     	sh "dotnet tool install --global dotnet-sonarscanner"
 		      	sh "export PATH=\"$PATH:$HOME/.dotnet/tools\""
-			sh "export JAVA_HOME=${JAVA_HOME}"
 			//sh "dotnet test" // Chạy các bài kiểm  tra
 			withSonarQubeEnv('Sonarqube-jenkins-docker') {
 			sh "dotnet ${tool 'SonarScannerforMSBuild'}/SonarScanner.MSBuild.dll begin /k:\"jenkins_asp_net_core\""
 			sh "dotnet build"
-			sh "echo ${JAVA_HOME}"
 			sh "dotnet ${tool 'SonarScannerforMSBuild'}/SonarScanner.MSBuild.dll end"
 		}
 		}
