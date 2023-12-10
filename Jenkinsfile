@@ -17,23 +17,16 @@ pipeline {
 			sh "dotnet build" // Xây dựng ứng dụng
 			//sh "apt-get update"
       			//sh "apt-get install --yes openjdk-11-jre"
-		     	//sh "dotnet tool install --global dotnet-sonarscanner"
-		      	//sh "export PATH=\"$PATH:$HOME/.dotnet/tools\""
+		     	sh "dotnet tool install --global dotnet-sonarscanner"
+		      	sh "export PATH=\"$PATH:$HOME/.dotnet/tools\""
 			//sh "dotnet test" // Chạy các bài kiểm  tra
-		}
-	}
-      stage("smc") {
-	agent any
-	steps {
-		sh "dotnet tool install --global dotnet-sonarscanner"
-		sh "export PATH=\"$PATH:$HOME/.dotnet/tools\""
-		withSonarQubeEnv('Sonarqube-jenkins-docker') {
+			withSonarQubeEnv('Sonarqube-jenkins-docker') {
 			sh "dotnet ${tool 'SonarScannerforMSBuild'}/SonarScanner.MSBuild.dll begin /k:\"jenkins_asp_net_core\""
 			sh "dotnet build"
 			sh "dotnet ${tool 'SonarScannerforMSBuild'}/SonarScanner.MSBuild.dll end"
 		}
+		}
 	}
-}
 	stage("build")
 	{
 		//agent { node { label 'master'} }
