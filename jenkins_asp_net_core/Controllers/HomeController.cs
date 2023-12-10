@@ -20,7 +20,7 @@ namespace jenkins_asp_net_core.Controllers
 
         public IActionResult Index()
         {
-			ViewData["data"]="sonarqube in jenkins and docker v1.0.4";
+			ViewData["data"]="sonarqube in jenkins and docker v1.0.5";
             return View();
         }
 
