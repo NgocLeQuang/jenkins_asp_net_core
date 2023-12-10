@@ -20,6 +20,7 @@ pipeline {
       			//sh "apt-get install --yes openjdk-11-jre"
 		     	sh "dotnet tool install --global dotnet-sonarscanner"
 		      	sh "export PATH=\"$PATH:$HOME/.dotnet/tools\""
+			sh "export JAVA_HOME=${JAVA_HOME}"
 			//sh "dotnet test" // Chạy các bài kiểm  tra
 			withSonarQubeEnv('Sonarqube-jenkins-docker') {
 			sh "dotnet ${tool 'SonarScannerforMSBuild'}/SonarScanner.MSBuild.dll begin /k:\"jenkins_asp_net_core\""
