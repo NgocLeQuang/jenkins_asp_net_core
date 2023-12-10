@@ -5,15 +5,6 @@ pipeline {
     DOCKER_IMAGE = "ngoclqdocker/jenkins_asp_net_core"
   }
   stages {
-
-	stage("jdk") {
-		agent any
-		steps {
-			sh "apt-get update"
-			sh "apt-get install --yes openjdk-11-jre"
-		}
-	}
-	  
     stage("Test") {
 		agent {
 			docker {
@@ -24,8 +15,8 @@ pipeline {
 		steps {
 			sh "dotnet restore" // Sử dụng dotnet restore để khôi phục các gói NuGet
 			sh "dotnet build" // Xây dựng ứng dụng
-			//sh "apt-get update"
-			//sh "apt-get install --yes openjdk-11-jre"
+			sh "apt-get update"
+			sh "apt-get install --yes openjdk-11-jre"
 			sh "dotnet tool install --global dotnet-sonarscanner"
 			sh "export PATH=\"$PATH:$HOME/.dotnet/tools\""
 			//sh "dotnet test" // Chạy các bài kiểm  tra
