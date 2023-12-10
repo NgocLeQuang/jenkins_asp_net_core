@@ -16,11 +16,12 @@ namespace jenkins_asp_net_core.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _logger = logger;
         }
 
         public IActionResult Index()
         {
-			ViewData["data"]="sonarqube in jenkins and docker v1.0.5";
+			ViewData["data"]="sonarqube in jenkins and docker v2";
             return View();
         }
 
